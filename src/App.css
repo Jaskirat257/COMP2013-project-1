@@ -17,6 +17,31 @@
   height: 100%;
 }
 
+.app-layout {
+  display: flex;
+  align-items: flex-start;
+}
+
+.main-content {
+  flex: 3;
+  padding: 1rem;
+}
+
+.cart-summary {
+  flex: 1;
+  padding: 1rem;
+  background-color: #fff0f5; /* light pink tint */
+  border-left: 2px solid #ccc;
+}
+
+
+body {
+  background-color: #ffe6f0; /* soft light pink */
+  margin: 0;
+  font-family: sans-serif;
+}
+
+
 .NavDiv {
   width: 33%;
 }

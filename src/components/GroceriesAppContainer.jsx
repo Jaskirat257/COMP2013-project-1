@@ -29,11 +29,13 @@ const GroceriesAppContainer = () => {
   const emptyCart = () => setCart([]);
 
   return (
-    <>
-      <NavBar cartCount={cart.length} />
-      <ProductsContainer products={productsData} addToCart={addToCart} />
-      <CartContainer cart={cart} removeFromCart={removeFromCart} emptyCart={emptyCart} />
-    </>
+    <div className="app-layout">
+  <div className="main-content">
+    <NavBar cartCount={cart.reduce((sum, item) => sum + item.quantity, 0)} />
+    <ProductsContainer products={productsData} addToCart={addToCart} />
+  </div>
+  <CartContainer cart={cart} removeFromCart={removeFromCart} emptyCart={emptyCart} />
+</div>
   );
 };
 
