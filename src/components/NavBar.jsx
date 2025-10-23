@@ -1,6 +1,10 @@
 const NavBar = ({ cartCount }) => (
-  <header className="navbar">
+  <nav>
     <h1>Groceries App</h1>
-    <p>Cart Items: {cartCount}</p>
-  </header>
+    <p>Hello, shopper!</p>
+    <div className="cart-icon">
+      🛒 <span>{cartCount}</span>
+    </div>
+  </nav>
 );
+export default NavBar;
