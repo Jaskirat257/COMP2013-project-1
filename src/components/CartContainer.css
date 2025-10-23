@@ -1,0 +1,18 @@
+.cart-container {
+  margin-top: 2rem;
+  padding: 1rem;
+  border-top: 2px solid #333;
+}
+
+.cart-container ul {
+  list-style: none;
+  padding: 0;
+}
+
+.cart-container li {
+  margin-bottom: 0.5rem;
+}
+
+.cart-container button {
+  margin-left: 1rem;
+}
