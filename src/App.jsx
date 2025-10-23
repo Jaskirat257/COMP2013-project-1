@@ -1,14 +1,12 @@
 import "./App.css";
-import ProductCard from "./Components/ProductCard.jsx";
-import ProductCardsContainer from "./Components/ProductCardsContainer";
-import data from "./data/data";
+import GroceriesAppContainer from "./components/GroceriesAppContainer.jsx";
+
+// Author: Jaskirat
+// Description: Project-1
 
 function App() {
-  return (
-    <>
-      <ProductCardsContainer data={data} />
-    </>
-  );
+  return <GroceriesAppContainer />;
 }
+
 
 export default App;
