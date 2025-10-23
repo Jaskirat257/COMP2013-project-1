@@ -1,23 +1,21 @@
 import "./CartContainer.css";
 
-function CartContainer({ cartItems, onRemove }) {
-  return (
-    <div className="cart-container">
-      <h2>Cart</h2>
-      {cartItems.length === 0 ? (
-        <p>Your cart is empty.</p>
-      ) : (
-        <ul>
-          {cartItems.map((item) => (
-            <li key={item.id}>
-              {item.name} - ${item.price.toFixed(2)}
-              <button onClick={() => onRemove(item.id)}>Remove</button>
-            </li>
-          ))}
-        </ul>
-      )}
-    </div>
-  );
-}
+import CartCard from './CartCard';
 
+const CartContainer = ({ cart, removeFromCart, emptyCart }) => (
+  <div className="cart">
+    <h2>Your Cart</h2>
+    {cart.length === 0 ? (
+      <p>No Items in the cart.</p>
+    ) : (
+      <>
+        {cart.map(item => (
+          <CartCard key={item.id} item={item} removeFromCart={removeFromCart} />
+        ))}
+        <button onClick={emptyCart}>Empty Cart</button>
+        <button>Buy (${cart.reduce((sum, item) => sum + item.price * item.quantity, 0)})</button>
+      </>
+    )}
+  </div>
+);
 export default CartContainer;

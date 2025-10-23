@@ -1,14 +1,17 @@
-import "./ProductCard.css";
+import { useState } from 'react';
+import QuantityCounter from './QuantityCounter';
 
-function ProductCard({ product, onAddToCart }) {
+const ProductCard = ({ product, addToCart }) => {
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className="product-card">
       <img src={product.image} alt={product.name} />
       <h3>{product.name}</h3>
-      <p>${product.price.toFixed(2)}</p>
-      <button onClick={() => onAddToCart(product)}>Add to Cart</button>
+      <p>${product.price}</p>
+      <QuantityCounter quantity={quantity} setQuantity={setQuantity} />
+      <button onClick={() => addToCart(product, quantity)}>Add to Cart</button>
     </div>
   );
-}
-
+};
 export default ProductCard;

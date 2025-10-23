@@ -1,35 +1,40 @@
-import { useState } from "react";
-import ProductCard from "./ProductCard.jsx";
-import CartContainer from "./CartContainer.jsx";
-import products from "../data/products.js";
-import "../App.css";
+import React, { useState } from 'react';
+import NavBar from './NavBar';
+import ProductsContainer from './ProductsContainer';
+import CartContainer from './CartContainer';
+import productsData from '../data/products';
 
-function GroceriesAppContainer() {
-  const [cartItems, setCartItems] = useState([]);
+const GroceriesAppContainer = () => {
+  const [cart, setCart] = useState([]);
 
-  const handleAddToCart = (product) => {
-    setCartItems((prev) => [...prev, product]);
+  const addToCart = (product, quantity) => {
+    if (quantity <= 0) {
+      alert("Please enter a quantity greater than 0.");
+      return;
+    }
+
+    const existing = cart.find(item => item.id === product.id);
+    if (existing) {
+      existing.quantity += quantity;
+      setCart([...cart]);
+    } else {
+      setCart([...cart, { ...product, quantity }]);
+    }
   };
 
-  const handleRemoveFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
+  const removeFromCart = (id) => {
+    setCart(cart.filter(item => item.id !== id));
   };
+
+  const emptyCart = () => setCart([]);
 
   return (
-    <div className="groceries-app">
-      <h1>Groceries App</h1>
-      <div className="products">
-        {products.map((product) => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            onAddToCart={handleAddToCart}
-          />
-        ))}
-      </div>
-      <CartContainer cartItems={cartItems} onRemove={handleRemoveFromCart} />
-    </div>
+    <>
+      <NavBar cartCount={cart.length} />
+      <ProductsContainer products={productsData} addToCart={addToCart} />
+      <CartContainer cart={cart} removeFromCart={removeFromCart} emptyCart={emptyCart} />
+    </>
   );
-}
+};
 
 export default GroceriesAppContainer;
