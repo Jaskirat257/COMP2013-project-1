@@ -30,7 +30,7 @@
 .cart-summary {
   flex: 1;
   padding: 1rem;
-  background-color: #fff0f5; /* light pink tint */
+  background-color: #fff0f5; /* this will display pink background */
   border-left: 2px solid #ccc;
 }
 
